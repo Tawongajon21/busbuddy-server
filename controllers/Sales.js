@@ -34,6 +34,7 @@ const {currency,paymentMethod}=req.body
         if (user) {
 
             let till=await Till.findOne({tillNo:"1234567890"});
+            console.log(till)
             const {products,tillNo,totalPrice}=till;
           for (let i = 0; i < products.length; i++) {
             const element = products[i];
