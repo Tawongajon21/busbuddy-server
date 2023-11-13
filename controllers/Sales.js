@@ -15,6 +15,7 @@ const GetSales=async(req,res)=>{
   
         }
     } catch (error) {
+        throw error
      res.status(500).json({msg:"server error"})
     }
  
