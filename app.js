@@ -14,7 +14,7 @@ const cartRouter = require('./routes/cart');
 const tillOperatorRoute = require('./routes/tilloperator');
 const adminRoutes = require('./routes/admin');
 const customerRoutes = require('./routes/customer');
-const barcode= require("jsbarcode");
+
 const tillRouter = require('./routes/till');
 const salesRouter = require('./routes/sales');
 dotenv.config();
@@ -42,7 +42,3 @@ app.use("/api/v1/transaction/",transactionRouter);
 app.use("/api/v1/statistics/",aggregateRouter);
 
 
-app.get("/",async(req,res)=>{
-const jsbarcode= barcode("#barcode",12345);
-res.send(jsbarcode)
-})
