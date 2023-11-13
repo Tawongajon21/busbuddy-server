@@ -69,8 +69,8 @@ await till.save()
         }
     } catch (error) {
     //console.log(error)
-      //  res.status(500).json({msg:"server error",error})
-        throw error
+      res.status(500).send(error)
+        //throw error
     }
 }
 
