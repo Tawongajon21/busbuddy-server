@@ -23,8 +23,8 @@ dotenv.config();
 app.use(cors());
 app.use(express.json());
 
-app.listen(process.env.Port,()=>{
-    console.log(`app running on port ${process.env.Port}`);
+app.listen(process.env.PORT,()=>{
+    console.log(`app running on port ${process.env.PORT}`);
 })
 
  connect(process.env.MONGODB_URI);
