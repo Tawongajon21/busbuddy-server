@@ -67,7 +67,7 @@ await till.save()
            res.status(401).json({msg:"user not authorized"}) 
         }
     } catch (error) {
-        throw error
+    console.log(error)
         res.status(500).json({msg:"server error",error})
     }
 }
