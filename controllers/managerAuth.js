@@ -35,7 +35,7 @@ catch (error) {
 }
    
 }
-          s
+        
     
 
 const ManagerSignin=async(req,res)=>{
