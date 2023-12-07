@@ -42,8 +42,11 @@ required:true
     quantityRemaining:{
         type:Number,
         required:true
+    },
+    shelfNumber:{
+        type:String,
+        required:true
     }
-   
 
 },{
     timestamps:true
