@@ -3,7 +3,9 @@ const {GeneratePassword, ValidatePassword, generateSignature,GenerateSalt}= requ
 
 const ManagerSignup=async(req,res)=>{
     const {email,phone,password,name,surname}=req.body;
-
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
      const salt= await GenerateSalt()
     
         const existingCustomer= await Manager.findOne({email});
