@@ -2,7 +2,7 @@ const Customer = require("../models/Admin");
 const Product= require("../models/Products");
 
 const CreateProduct=async(req,res)=>{
-    const {name,brand,model,sellingPrice,buyingPrice,barcode,quantityBought,quantitySold,year}= req.body;
+    const {name,brand,model,sellingPrice,buyingPrice,barcode,quantityBought,quantitySold,year,shelfNumber}= req.body;
  
       const product= await Product.findOne({barcode:barcode});
   
@@ -19,6 +19,7 @@ const CreateProduct=async(req,res)=>{
             quantityBought,
             quantitySold,
             quantityRemaining:quantityBought-quantitySold,
+            shelfNumber
           
             year
             });
