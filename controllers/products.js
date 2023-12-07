@@ -19,7 +19,7 @@ const CreateProduct=async(req,res)=>{
             quantityBought,
             quantitySold,
             quantityRemaining:quantityBought-quantitySold,
-            shelfNumber
+            shelfNumber,
           
             year
             });
