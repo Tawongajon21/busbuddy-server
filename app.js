@@ -29,10 +29,7 @@ app.listen(process.env.PORT,()=>{
 })
 
  connect(process.env.MONGODB_URI);
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
-});
+
 app.use("/api/v1/admin/",adminRoutes);
 
 app.use("/api/v1/manager/",managerRoutes);
