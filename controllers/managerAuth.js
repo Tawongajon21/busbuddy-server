@@ -3,47 +3,41 @@ const {GeneratePassword, ValidatePassword, generateSignature,GenerateSalt}= requ
 
 const ManagerSignup=async(req,res)=>{
     const {email,phone,password,name,surname}=req.body;
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-     const salt= await GenerateSalt()
+try {
+    const salt= await GenerateSalt()
     
-        const existingCustomer= await Manager.findOne({email});
-        const userPassword= await GeneratePassword(password,salt)
-      
-            if (existingCustomer) {
-                res.status(401).json({
-                    msg:"Email already in use"
-                })
-            }
-            else if(!existingCustomer){
-                const newUser= await Manager.create({
-                   name,email,password:userPassword,phone,salt,surname
-                });
-                if (newUser) {
-                  const signature=await generateSignature({
-                    _id:newUser._id,
-                    email:newUser.email,
-                    phone:newUser.phone,
-                    isAdmin:newUser.isAdmin,
-        
-                  })  
-                  res.status(201).json({
-                  signature,email:newUser.email,phone:newUser.phone,isAdmin:newUser.isAdmin,name:newUser.name,
-                surname:newUser.surname
-                })
-                   
-        
-                }
-        
-            }
-            else{
-        
-                res.status(500).json({msg:"server error"})
-        
-            }
-    
+    const existingCustomer= await Manager.findOne({email});
+    const userPassword= await GeneratePassword(password,salt)
+    if (existingCustomer) {
+        res.status(401).json({
+            msg:"Email already in use"
+        })
+    }else{
+        const newUser= await Manager.create({
+            name,email,password:userPassword,phone,salt,surname
+         });
+         if (newUser) {
+           const signature=await generateSignature({
+             _id:newUser._id,
+             email:newUser.email,
+             phone:newUser.phone,
+             isAdmin:newUser.isAdmin,
+ 
+           })  
+           res.status(201).json({
+           signature,email:newUser.email,phone:newUser.phone,isAdmin:newUser.isAdmin,name:newUser.name,
+         surname:newUser.surname
+         })
+    }
+} }
+catch (error) {
+    res.status(500).json({msg:"error",error})
 }
+   
+}
+          s
+    
+
 const ManagerSignin=async(req,res)=>{
     const {email,password}= req.body;
     const existingAdmin=await Manager.findOne({email:email});
