@@ -1,7 +1,7 @@
 const express= require("express");
 const { GetProducts, GetProduct, CreateProduct, DeleteProduct, UpdateProduct, AddToCart, GetCart } = require("../controllers/products");
 const isAuth = require("../middlewares/auth");
-
+const multer= require("multer")
 
 
 const productRouter= express.Router();
