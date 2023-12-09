@@ -3,31 +3,33 @@ const Product= require("../models/Products");
 
 const CreateProduct=async(req,res)=>{
     const {name,brand,model,sellingPrice,buyingPrice,barcode,quantityBought,quantitySold,year,shelfNumber}= req.body;
- 
-      const product= await Product.findOne({barcode:barcode});
-  
-      if (product) {
-        res.status(200).json({msg:"The product containing the barcode already exists."})
-      }else if(!product){
-        const newProduct= await Product.create({
-            name,
-            brand,
-            model,
-            sellingPrice,
-            buyingPrice,
-            barcode,
-            quantityBought,
-            quantitySold,
-            quantityRemaining:quantityBought-quantitySold,
-            shelfNumber,
-          
-            year
-            });
-            
-    res.status(201).json(newProduct)
-      }else{
-        res.status(500).json({msg:"cannot create product"})
-      }
+ try {
+  const product= await Product.findOne({barcode:barcode});
+  if (product) {
+    res.status(200).json({msg:"The product containing the barcode already exists."})
+  }else{
+    const newProduct= await Product.create({
+      name,
+      brand,
+      model,
+      sellingPrice,
+      buyingPrice,
+      barcode,
+      quantityBought,
+      quantitySold,
+      quantityRemaining:quantityBought-quantitySold,
+      shelfNumber,
+    
+      year
+      });
+      
+res.status(201).json(newProduct)
+  }
+ } catch (error) {
+  res.status(500).json({msg:"cannot create product",error})
+ }
+    
+
   
 
 
