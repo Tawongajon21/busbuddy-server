@@ -43,11 +43,15 @@ required:true
         type:Number,
         required:true
     },
+    
     shelfNumber:{
         type:String,
         required:true
+    },
+    image:{
+        type:String,
+        required:true
     }
-
 },{
     timestamps:true
 })

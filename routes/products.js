@@ -5,11 +5,11 @@ const isAuth = require("../middlewares/auth");
 
 
 const productRouter= express.Router();
-
+const uploadMiddleware = multer({ dest: 'uploads/' });
 productRouter.get("/get-products",GetProducts)
 productRouter.get("/get-product/:id",GetProduct)
 productRouter.use(isAuth)
-productRouter.post("/create-product",CreateProduct)
+productRouter.post("/create-product",uploadMiddleware.any(),CreateProduct)
 productRouter.put("/update-product/:id",UpdateProduct)
 productRouter.delete("/delete-product/:id",DeleteProduct)
 
