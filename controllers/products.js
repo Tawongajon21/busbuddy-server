@@ -60,6 +60,7 @@ const CreateProduct=async(req,res)=>{
 res.status(201).json(newProduct)
   }
  } catch (error) {
+     console.log(error)
   res.status(500).json({msg:"cannot create product",error})
  }
     
