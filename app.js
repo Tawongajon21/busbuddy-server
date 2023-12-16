@@ -23,7 +23,7 @@ dotenv.config();
 
 app.use(express.json());
 const corsOptions ={
-    origin:'http://localhost:3000', 
+    origin:'127.0.0.1:3000', 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
