@@ -29,7 +29,7 @@ const corsOptions ={
 }
 app.use(cors(corsOptions))
 
-app.listen(process.env.PORT,()=>{
+app.listen(process.env.PORT,"0.0.0.0",()=>{
     console.log(`app running on port ${process.env.PORT}`);
 })
 
