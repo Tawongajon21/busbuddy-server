@@ -29,6 +29,7 @@ const tillOperatorSignUp=async(req,res)=>{
                     surname:newTillOperator.surname,
         
                   })  
+                    res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
                   res.status(201).json({
                   
                     _id:newTillOperator._id,
