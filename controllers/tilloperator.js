@@ -27,6 +27,7 @@ const tillOperatorSignUp=async(req,res)=>{
                     phone:newTillOperator.phone,
                     isAdmin:newTillOperator.isAdmin,
                     surname:newTillOperator.surname,
+                    name:newTillOperator.name
         
                   })  
                     res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
