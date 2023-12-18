@@ -1,14 +1,20 @@
 const Customer = require("../models/Admin");
 const Product= require("../models/Products");
+const dotenv= require("dotenv")
+
+dotenv.config();
 const bucket="takakou-bucket"
+const fs=require("fs")
 const {S3Client, PutObjectAclCommand, PutObjectCommand}= require("@aws-sdk/client-s3")
 async function uploadToS3(path,originalFilename,mimetype) {
+  console.log(process.env.AWS_ACCESS_KEY);
+  console.log(process.env.AWS_SECRET_ACCESS_KEY);
     const client= new S3Client({
         region:"eu-north-1",
 
         credentials:{
-            accessKeyId:process.env.AWS_ACCESS_KEY,
-            secretAccessKey:process.env.AWS_SECRET_ACCESS_KEY
+            accessKeyId:process.env.S3_ACCESS_KEY,
+            secretAccessKey:process.env.S3_SECRET_KEY
         }
     })
     const parts= originalFilename.split(".");
@@ -60,6 +66,7 @@ const CreateProduct=async(req,res)=>{
 res.status(201).json(newProduct)
   }
  } catch (error) {
+  console.log(error);
   res.status(500).json({msg:"cannot create product",error})
  }
     
