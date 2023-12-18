@@ -1,9 +1,12 @@
 const Customer = require("../models/Admin");
 const Product= require("../models/Products");
+
 const dotenv= require("dotenv")
 
 dotenv.config();
-const bucket="takakou-bucket"
+
+const bucket=process.env.bucketName
+
 const fs=require("fs")
 const {S3Client, PutObjectAclCommand, PutObjectCommand}= require("@aws-sdk/client-s3")
 async function uploadToS3(path,originalFilename,mimetype) {

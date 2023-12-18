@@ -23,13 +23,13 @@ dotenv.config();
 
 app.use(express.json());
 const corsOptions ={
-    origin:'http://localhost:3000', 
+    origin:'*', 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
 app.use(cors(corsOptions))
 
-app.listen(process.env.PORT,()=>{
+app.listen(process.env.PORT,"0.0.0.0",()=>{
     console.log(`app running on port ${process.env.PORT}`);
 })
 

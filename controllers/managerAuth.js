@@ -1,4 +1,7 @@
 const Manager = require('../models/Manager');
+const Admin = require('../models/Admin');
+const Cashier = require('../models/TillOperator');
+
 const {GeneratePassword, ValidatePassword, generateSignature,GenerateSalt}= require("../utils/index")
 
 const ManagerSignup=async(req,res)=>{
@@ -97,8 +100,38 @@ const GetManagerProfile =async(req,res)=>{
     }
 }
 
+const GetAdmins=async(req,res)=>{
+    try {
+        const user= req.user;
+        if (user) {
+            const admins= await Admin.find();
+            res.status(200).json(admins)
+        }
+        else{
+            res.status(401).json({msg:"User not authorized"})
+        }
+    } catch (error) {
+       res.status(500).json({msg:"Error"}) 
+    }
+  
+}
+const GetCashiers=async(req,res)=>{
+    try {
+        const user= req.user;
+        if (user) {
+            const cashiers= await Cashier.find();
+            res.status(200).json(cashiers)
+        }
+        else{
+            res.status(401).json({msg:"User not authorized"})
+        }
+    } catch (error) {
+       res.status(500).json({msg:"Error"}) 
+    }
+  
+}
 
 module.exports={
-   ManagerSignin,ManagerSignup,EditManagerProfile,GetManagerProfile
+   ManagerSignin,ManagerSignup,EditManagerProfile,GetManagerProfile,GetAdmins,GetCashiers
 }
 
