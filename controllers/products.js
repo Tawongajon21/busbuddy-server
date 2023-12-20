@@ -39,7 +39,7 @@ const CreateProduct=async(req,res)=>{
  try {
   const product= await Product.findOne({barcode:barcode});
   if (product) {
-    res.status(200).json({msg:"The product containing the barcode already exists."})
+    res.status(401).json({msg:"The product containing the barcode already exists."})
   }else{
     let url
     //   console.log(files);
