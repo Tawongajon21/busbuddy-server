@@ -1,7 +1,7 @@
 const mongoose= require('mongoose');
 
 
-const AdminSchema=mongoose.Schema({
+const DriverSchema=mongoose.Schema({
     name:{
         type:String,
         required:true
@@ -28,17 +28,17 @@ const AdminSchema=mongoose.Schema({
     },
     role:{
         type:String,
-       default:"Admin"
+       default:"driver"
     },
     company:{
-        type:String,
-      required:true
-    },
+        type:mongoose.Types.ObjectId,
+        ref:'company'
+    }
     
 
 
 });
 
-const Admin= mongoose.model('admin',AdminSchema);
+const Driver= mongoose.model('driver',DriverSchema);
 
-module.exports=Admin
+module.exports=Driver

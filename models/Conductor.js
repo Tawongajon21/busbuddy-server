@@ -1,7 +1,7 @@
 const mongoose= require('mongoose');
 
 
-const AdminSchema=mongoose.Schema({
+const ConductorSchema=mongoose.Schema({
     name:{
         type:String,
         required:true
@@ -20,7 +20,8 @@ const AdminSchema=mongoose.Schema({
     },
     password:{
         type:String,
-        required:true
+        required:true,
+    
     },
     salt:{
         type:String,
@@ -28,17 +29,24 @@ const AdminSchema=mongoose.Schema({
     },
     role:{
         type:String,
-       default:"Admin"
+       default:"conductor"
     },
     company:{
         type:String,
-      required:true
-    },
+        required:true
+    }
     
 
 
 });
+ConductorSchema.virtual('publicData').get(function (){
+    return {
+        name:this.name,
+        surname:this.surname,
+        email:this.email
+    }
+})
 
-const Admin= mongoose.model('admin',AdminSchema);
+const Conductor= mongoose.model('conductor',ConductorSchema);
 
-module.exports=Admin
+module.exports=Conductor

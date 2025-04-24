@@ -1,0 +1,111 @@
+export const data=
+{
+ "Harare - Beitbridge"   :
+[
+    {
+        from:"Harare",
+        to:"Beatrice"
+    },
+    {
+        from:"Beatrice",
+        to:"Chivhu"
+    },
+    {
+        from:"Chivhu",
+        to:"Featherstone"
+    },
+    {
+        from:"Featherstone",
+        to:"Mvuma"
+    },
+    {
+        from:"Mvuma",
+        to:"Masvingo"
+    },
+    {
+        from:"Masvingo",
+        to:"Beitbridge"
+    },
+],
+ "Harare - Masvingo"   :
+[
+    {
+        from:"Harare",
+        to:"Beatrice"
+    },
+    {
+        from:"Beatrice",
+        to:"Chivhu"
+    },
+    {
+        from:"Chivhu",
+        to:"Featherstone"
+    },
+    {
+        from:"Featherstone",
+        to:"Mvuma"
+    },
+    {
+        from:"Mvuma",
+        to:"Masvingo"
+    }
+],
+ "Harare - Bulawayo"   :
+[
+    {
+        from:"Harare",
+        to:"Norton"
+    },
+    {
+        from:"Norton",
+        to:"Chegutu"
+    },
+    {
+        from:"Chegutu",
+        to:"Kadoma"
+    },
+    {
+        from:"Kadoma",
+        to:"Kwekwe"
+    },
+    {
+        from:"Kwekwe",
+        to:"Gweru"
+    },
+    {
+        from:"Gweru",
+        to:"Bulawayo"
+    }
+
+],
+ "Harare - Mutare"   :
+[
+    {
+        from:"Harare",
+        to:"Ruwa"
+    },
+    {
+        from:"Ruwa",
+        to:"Marondera"
+    },
+    {
+        from:"Marondera",
+        to:"Macheke"
+    },
+    {
+        from:"Headlands",
+        to:"Rusape"
+    },
+    {
+        from:"Rusape",
+        to:"Nyazura"
+    },
+    {
+        from:"Nyazura",
+        to:"Mutare"
+    }
+
+],
+
+
+}

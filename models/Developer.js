@@ -1,7 +1,7 @@
 const mongoose= require('mongoose');
 
 
-const AdminSchema=mongoose.Schema({
+const DeveloperSchema=mongoose.Schema({
     name:{
         type:String,
         required:true
@@ -28,17 +28,13 @@ const AdminSchema=mongoose.Schema({
     },
     role:{
         type:String,
-       default:"Admin"
-    },
-    company:{
-        type:String,
-      required:true
-    },
+       default:"Developer"
+    }
     
 
 
 });
 
-const Admin= mongoose.model('admin',AdminSchema);
+const Developer= mongoose.model('developer',DeveloperSchema);
 
-module.exports=Admin
+module.exports=Developer
