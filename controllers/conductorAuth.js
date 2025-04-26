@@ -1,6 +1,7 @@
 const {GeneratePassword, ValidatePassword, generateSignature,GenerateSalt}= require("../utils/index");
 
 const Conductor=require("../models/Conductor")
+const Companies=require("../models/Company")
 
 
 const ConductorSignup=async(req,res)=>{
@@ -110,12 +111,14 @@ const getConductors=async(req,res)=>{
     let role=user.role;
     let company=user.company
     console.log(user);
+  
     try {
         if (user) {
             if (role==="companyOwner" || "Admin") {
+                let oneCompany= await Companies.findOne({companyOwner:userId});
+                let companyId=oneCompany._id;
 
-
-                const conductors=await Conductor.find({company}).select("name surname email role phone");
+                const conductors=await Conductor.find({company:companyId}).select("name surname email role phone company");
                 res.status(200).json(conductors)
             }else{
                 res.status(401).json({msg:"User not authorized"})

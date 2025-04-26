@@ -116,10 +116,11 @@ const getDrivers=async(req,res)=>{
 
     try {
         if (user) {
-            if (role==="companyOwner" || "Admin") {
+            if (role==="companyOwner" ) {
 
 let company= await Companies.findOne({companyOwner:userId});
-let companyId=company._id
+let companyId=company._id;
+
                 const drivers=await Driver.find({company:companyId}).select("name surname email role phone company");
                 res.status(200).json(drivers)
 } 
