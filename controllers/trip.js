@@ -67,7 +67,11 @@ let io=function (req) {
 
 
 const CreateTrip=async(req,res)=>{
-   
+    let user=req.user;
+    let userId=user._id;
+
+    let role=user.role;
+    console.log(role);
     
 const {to,from,departure,arrival,busfare,capacity,bus,dropOffAreas,driver,company,conductor}=req.body;
 console.log(company);
@@ -80,8 +84,7 @@ console.log(company);
             }
         );
 
-let user=req.user;
-let userId=user._id;
+
 let dbUser=await User.findById(userId);
 
 let name ="hello";
