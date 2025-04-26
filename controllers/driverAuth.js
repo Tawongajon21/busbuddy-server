@@ -118,7 +118,7 @@ const getDrivers=async(req,res)=>{
             if (role==="companyOwner" || "Admin") {
 
 
-                const drivers=await Driver.find({company}).select("name surname email role phone");
+                const drivers=await Driver.find().select("name surname email role phone");
                 res.status(200).json(drivers)
             }else{
                 res.status(401).json({msg:"User not authorized"})

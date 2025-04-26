@@ -18,6 +18,7 @@ const companyOwnerRoutes = require('./routes/companyOwner-auth');
 const Notification=require('./models/Notifications')
 const server=require('http').createServer(app);
 const {Server}=require("socket.io")
+
 const io=new Server(server,{
     cors:{
       origin: [ 'https://busbuddy-client.vercel.app','http://localhost:3005'],
