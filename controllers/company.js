@@ -20,7 +20,7 @@ if (user) {
     if (role==="Admin" || "companyOwner") {
         console.log(name);
         console.log(companyOwner);
-        let newCompany=await Company.create({name,companyOwner,companyNameEntered:true})
+        let newCompany=await Company.create({name,companyOwner,companyNameEntered:true});
         console.log(newCompany);
         res.status(200).json(newCompany)
     }else{

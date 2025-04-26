@@ -2,7 +2,7 @@ const {GeneratePassword, ValidatePassword, generateSignature,GenerateSalt}= requ
 
 const Driver=require("../models/Driver")
 const Trips=require("../models/Trip")
-
+const Companies=require("../models/Company")
 
 const DriverSignup=async(req,res)=>{
 
@@ -113,14 +113,20 @@ const getDrivers=async(req,res)=>{
     let role=user.role;
     let company=user.company
     console.log(company);
+
     try {
         if (user) {
             if (role==="companyOwner" || "Admin") {
 
-
-                const drivers=await Driver.find().select("name surname email role phone company");
+let company= await Companies.findOne({companyOwner:userId});
+let companyId=company._id
+                const drivers=await Driver.find({company:companyId}).select("name surname email role phone company");
                 res.status(200).json(drivers)
-            }else{
+} 
+            else if (role==="Admin"){
+console.log("hello world");
+            }
+            else{
                 res.status(401).json({msg:"User not authorized"})
             }
          
