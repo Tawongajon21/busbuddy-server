@@ -237,7 +237,7 @@ console.log(err);
 
 
 
-sendEmail(`${newTicket.name} ${newTicket.surname}`,`${newTicket.name} ${newTicket.surname} ticket.pdf`,pdfBuffer)
+
 
 
     }
