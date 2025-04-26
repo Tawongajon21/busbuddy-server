@@ -112,7 +112,7 @@ const getDrivers=async(req,res)=>{
     let userId=user._id;
     let role=user.role;
     let company=user.company
-    console.log(user);
+    console.log(company);
     try {
         if (user) {
             if (role==="companyOwner" || "Admin") {
