@@ -20,7 +20,7 @@ const server=require('http').createServer(app);
 const {Server}=require("socket.io")
 const io=new Server(server,{
     cors:{
-      origin: [ 'http://localhost:3000','http://localhost:3005'],
+      origin: [ 'https://busbuddy-client.vercel.app','http://localhost:3005'],
     methods:['GET','POST']
 },
 transports:['websocket','polling']

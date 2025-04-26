@@ -26,8 +26,6 @@ let newArray
 
 
 async    function handleFile(data){
-
-
 let image;
 for(let i=0;i<data.length;++i){
 const {originalname,path}=data[i];
@@ -36,14 +34,10 @@ const ext= parts[parts.length-1];
 newPath=path+'.'+ext;
 
 fs.renameSync(path,newPath)
-let outputFile=`${newPath}-thumbnail.jpg`
-let originalFile=`${newPath}-original.jpg`
  async  function createThumbnail(data) {
  let getData=await sharp(data).resize(100,100).jpeg({quality:80}).toBuffer();
- let convertString=getData.toString('base64')
- console.log("before");
-
-    return convertString
+ let convertedString=getData.toString('base64')
+    return convertedString
 }
 
 let thumbnail= await createThumbnail(newPath);
