@@ -3,6 +3,7 @@ const Trip=require("../models/Trip");
 const Ticket=require("../models/Ticket")
 const Passenger=require("../models/Passenger")
 const Conductor=require("../models/Conductor")
+const Company=require("../models/Company")
 const qrCode=require("qrcode")
 const puppeteer=require("puppeteer");
 const fixDate=require("../date");
@@ -77,7 +78,16 @@ const {to,from,departure,arrival,busfare,capacity,bus,dropOffAreas,driver,compan
 console.log(company);
     try {
         let item=await Bus.findById(bus);
-       
+       if (role==="companyOwner") {
+        let getcompany=await Company.findOne({companyOwner:userId});
+let companyId= getcompany._id;
+const trip=await Trip.create(
+    {
+        to,from,departure,arrival,busfare,capacity,dropOffAreas,bus:item,driver,company:companyId,conductor,driver
+    }
+);
+res.status(200).json(trip)
+       }
         const trip=await Trip.create(
             {
                 to,from,departure,arrival,busfare,capacity,dropOffAreas,bus:item,driver,company,conductor,driver
